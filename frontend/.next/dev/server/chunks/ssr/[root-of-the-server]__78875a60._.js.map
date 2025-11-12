@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/Desktop/petrol_station/frontend/src/app/attendant/payments/page.tsx"],"sourcesContent":["export default function Payments() {\r\n  return (\r\n    <div>\r\n      <h1 className=\"text-2xl font-bold mb-4\">Payments</h1>\r\n      <p className=\"text-gray-600\">Record and view customer payments.</p>\r\n      <div className=\"mt-6 bg-white p-6 rounded-xl shadow-md\">\r\n        <p>No payments yet.</p>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,uRAAC;;0BACC,uRAAC;gBAAG,WAAU;0BAA0B;;;;;;0BACxC,uRAAC;gBAAE,WAAU;0BAAgB;;;;;;0BAC7B,uRAAC;gBAAI,WAAU;0BACb,cAAA,uRAAC;8BAAE;;;;;;;;;;;;;;;;;AAIX","debugId":null}}]
+}

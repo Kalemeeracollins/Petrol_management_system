@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/Desktop/petrol_station/frontend/src/app/supplier/profile/page.tsx"],"sourcesContent":["\"use client\"\r\nimport { useAuth } from \"@/context/auth-context\"\r\n\r\nexport default function Profile() {\r\n  const { user } = useAuth()\r\n\r\n  return (\r\n    <div>\r\n      <h1 className=\"text-2xl font-bold mb-4\">Profile</h1>\r\n      <div className=\"bg-white p-6 rounded-xl shadow-md max-w-md\">\r\n        <p><strong>Name:</strong> {user?.name}</p>\r\n        <p><strong>Email:</strong> {user?.email}</p>\r\n        <p><strong>Role:</strong> {user?.role}</p>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;AACA;;;AADA;;AAGe,SAAS;;IACtB,MAAM,EAAE,IAAI,EAAE,GAAG,IAAA,gJAAO;IAExB,qBACE,6LAAC;;0BACC,6LAAC;gBAAG,WAAU;0BAA0B;;;;;;0BACxC,6LAAC;gBAAI,WAAU;;kCACb,6LAAC;;0CAAE,6LAAC;0CAAO;;;;;;4BAAc;4BAAE,MAAM;;;;;;;kCACjC,6LAAC;;0CAAE,6LAAC;0CAAO;;;;;;4BAAe;4BAAE,MAAM;;;;;;;kCAClC,6LAAC;;0CAAE,6LAAC;0CAAO;;;;;;4BAAc;4BAAE,MAAM;;;;;;;;;;;;;;;;;;;AAIzC;GAbwB;;QACL,gJAAO;;;KADF","debugId":null}}]
+}

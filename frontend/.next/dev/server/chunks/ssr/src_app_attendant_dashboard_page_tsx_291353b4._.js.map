@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/Desktop/petrol_station/frontend/src/app/attendant/dashboard/page.tsx"],"sourcesContent":["\"use client\"\r\nimport { AttendantLayout } from \"@/components/layout/attendant-layout\"\r\n\r\nexport default function AttendantDashboard() {\r\n  return (\r\n    <>\r\n      <div className=\"p-6 text-white\">Welcome to Attendant Dashboard</div>\r\n    </>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;;AAGe,SAAS;IACtB,qBACE;kBACE,cAAA,8OAAC;YAAI,WAAU;sBAAiB;;;;;;;AAGtC","debugId":null}}]
+}

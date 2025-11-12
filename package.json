@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "framer-motion": "^12.23.24",
+    "js-cookie": "^3.0.5",
+    "recharts": "^3.3.0"
+  }
+}

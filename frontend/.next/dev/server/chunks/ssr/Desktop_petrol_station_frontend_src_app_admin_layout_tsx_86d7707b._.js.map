@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/Desktop/petrol_station/frontend/src/app/admin/layout.tsx"],"sourcesContent":["import AdminLayout from \"@/components/layout/admin-layout\"\r\nimport { ThemeProvider } from \"@/context/theme-context\"\r\n\r\nexport default function Layout({ children }: { children: React.ReactNode }) {\r\n  return (\r\n    <ThemeProvider>\r\n      <AdminLayout>{children}</AdminLayout>\r\n    </ThemeProvider>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;AAGe,SAAS,OAAO,EAAE,QAAQ,EAAiC;IACxE,qBACE,uRAAC;kBACC,cAAA,uRAAC;sBAAa;;;;;;;;;;;AAGpB","debugId":null}}]
+}
