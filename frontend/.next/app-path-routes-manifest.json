@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/dashboard/page": "/admin/dashboard",
+  "/admin/fuel-management/page": "/admin/fuel-management",
+  "/admin/maintenance/page": "/admin/maintenance",
+  "/admin/reports/page": "/admin/reports",
+  "/admin/restock/page": "/admin/restock",
+  "/admin/sales-records/page": "/admin/sales-records",
+  "/admin/settings/page": "/admin/settings",
+  "/admin/shifts/page": "/admin/shifts",
+  "/attendant/alerts/page": "/attendant/alerts",
+  "/attendant/dashboard/page": "/attendant/dashboard",
+  "/attendant/profile/page": "/attendant/profile",
+  "/attendant/sales/page": "/attendant/sales",
+  "/attendant/shifts/page": "/attendant/shifts",
+  "/login/page": "/login",
+  "/page": "/",
+  "/register/page": "/register"
+}

@@ -286,7 +286,7 @@ export default function DashboardPage() {
         isDarkMode ? "dark bg-slate-950 text-slate-100" : "bg-slate-100 text-slate-900"
       )}
     >
-      <div variant={isDarkMode ? "dark" : "light"}>
+      <div >
         <div className="flex flex-col gap-6 p-6">
           {/* Header */}
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -305,18 +305,6 @@ export default function DashboardPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Button
-                variant="secondary"
-                onClick={toggleTheme}
-                className={cn(
-                  "shadow-lg",
-                  isDarkMode
-                    ? "border border-white/10 bg-slate-900/40 text-white hover:bg-slate-900/60"
-                    : "border border-slate-200/60 bg-white/90 text-slate-800 hover:bg-white"
-                )}
-              >
-                Switch to {isDarkMode ? "Light" : "Dark"} Mode
-              </Button>
               <Button
                 onClick={logout}
                 variant="danger"
@@ -518,8 +506,7 @@ export default function DashboardPage() {
                                 <Button
                                   onClick={() => handleToggleUserStatus(u.id)}
                                   disabled={userManagementLoading}
-                                  variant={u.active ? "danger" : "default"}
-                                  size="sm"
+                                  variant={u.active ? "danger" : "primary"}
                                 >
                                   {u.active ? "Deactivate" : "Activate"}
                                 </Button>

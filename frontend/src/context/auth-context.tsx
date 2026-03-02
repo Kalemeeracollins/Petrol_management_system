@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
+// Types
 interface User {
   id: string
   name: string
@@ -16,51 +17,80 @@ interface AuthContextType {
   isAuthenticated: boolean
   loading: boolean
   error: string | null
+  authToken: string | null
   login: (email: string, password: string) => Promise<void>
   logout: () => Promise<void>
-  register: (name: string, email: string, password: string, role?: string) => Promise<void> // ✅ added
+  register: (name: string, email: string, password: string, role?: string) => Promise<void>
 }
+
+// Create axios instance with base URL
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+  withCredentials: true, // if you still want to send cookies
+})
+
+// Add a request interceptor to attach token from localStorage
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken")
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+  const [authToken, setAuthToken] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  // 🔹 Fetch logged-in user on app start
+  // 🔹 Restore session from localStorage on app start
   useEffect(() => {
+    const token = localStorage.getItem("authToken")
+    if (!token) {
+      setLoading(false)
+      return
+    }
+
+    setAuthToken(token)
+
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/me", {
-          withCredentials: true,
-        })
+        // api interceptor will automatically add the token
+        const res = await api.get("/auth/me")
         setUser(res.data)
       } catch {
+        localStorage.removeItem("authToken")
+        setAuthToken(null)
         setUser(null)
       } finally {
         setLoading(false)
       }
     }
+
     fetchUser()
   }, [])
 
-  // 🔹 Login function
+  // 🔹 Login
   const login = async (email: string, password: string) => {
     setLoading(true)
     setError(null)
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password },
-        { withCredentials: true }
-      )
+      const res = await api.post("/auth/login", { email, password })
 
-      const loggedInUser = res.data.user || res.data
+      // Assuming backend returns { token, user }
+      const { token, user: loggedInUser } = res.data
+
+      if (token) {
+        localStorage.setItem("authToken", token)
+        setAuthToken(token)
+      }
       setUser(loggedInUser)
 
-      // Redirect by role
+      // Redirect based on role
       switch (loggedInUser.role) {
         case "ADMIN":
           router.push("/admin/dashboard")
@@ -82,42 +112,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  // 🔹 Register function (NEW)
+  // 🔹 Logout
+  const logout = async () => {
+    setLoading(true)
+    try {
+      await api.post("/auth/logout")
+    } catch {
+      // ignore
+    } finally {
+      localStorage.removeItem("authToken")
+      setAuthToken(null)
+      setUser(null)
+      setLoading(false)
+      router.push("/login")
+    }
+  }
+
+  // 🔹 Register (e.g., for admins creating attendants)
   const register = async (name: string, email: string, password: string, role = "ATTENDANT") => {
     setLoading(true)
     setError(null)
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register", // your backend attendants route
-        { name, email, password, role },
-        { withCredentials: true }
-      )
-
-      // Optional: set user if you want to log in right after register
-      // setUser(res.data.user || res.data)
-
-      console.log("Attendant created:", res.data)
-      alert("✅ Attendant added successfully!")
+      const res = await api.post("/auth/register", { name, email, password, role })
+      console.log("User created:", res.data)
+      alert("✅ User added successfully!")
     } catch (err: any) {
       console.error(err)
       setError(err.response?.data?.message || "Registration failed")
       throw err
     } finally {
       setLoading(false)
-    }
-  }
-
-  // 🔹 Logout
-  const logout = async () => {
-    setLoading(true)
-    try {
-      await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true })
-    } catch {
-      // ignore errors
-    } finally {
-      setUser(null)
-      setLoading(false)
-      router.push("/login")
     }
   }
 
@@ -128,9 +152,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAuthenticated: !!user,
         loading,
         error,
+        authToken,
         login,
         logout,
-        register, // ✅ added here
+        register,
       }}
     >
       {children}
@@ -138,34 +163,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   )
 }
 
+// Custom hook for using auth context
 export function useAuth() {
   const context = useContext(AuthContext)
-  if (!context) throw new Error("useAuth must be used within AuthProvider")
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider")
+  }
   return context
 }
-// Fetch user on page load
-export const fetchUser = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/api/auth/me", {
-      credentials: "include",
-    });
 
-    if (!res.ok) throw new Error("Failed to fetch user");
-
-    const data = await res.json();
-    setUser(data.user); // attach to context
-    setIsAuthenticated(true);
-  } catch (err) {
-    console.error(err);
-    setUser(null);
-    setIsAuthenticated(false);
-  }
-};
-function setIsAuthenticated(arg0: boolean) {
-  throw new Error("Function not implemented.")
-}
-
-function setUser(user: any) {
-  throw new Error("Function not implemented.")
-}
-
+// Export the configured axios instance for use in components
+export { api }

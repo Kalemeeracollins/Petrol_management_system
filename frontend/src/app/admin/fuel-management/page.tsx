@@ -95,9 +95,11 @@ export default function FuelManagementPage() {
         </div>
 
         {error && (
-          <Alert variant="destructive" className="mb-6">
-            {error}
-          </Alert>
+          <div className="mb-6">
+            <Alert variant="destructive">
+              {error}
+            </Alert>
+          </div>
         )}
 
         {showForm && (
@@ -162,7 +164,6 @@ export default function FuelManagementPage() {
                       <td className="py-3 px-4">{fuel.quantityInStock}</td>
                       <td className="py-3 px-4 space-x-2">
                         <Button
-                          size="sm"
                           variant="secondary"
                           onClick={() => {
                             setFormData({
@@ -178,8 +179,7 @@ export default function FuelManagementPage() {
                           Edit
                         </Button>
                         <Button
-                          size="sm"
-                          variant="destructive"
+                          variant={fuel.id === editingId ? "primary" : "danger"}
                           onClick={() => handleDelete(fuel.id)}
                           aria-label={`Delete ${fuel.name}`}
                         >

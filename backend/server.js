@@ -5,8 +5,10 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
+import bcrypt from "bcrypt"; // added for password hashing
 
 import sequelize, { connectDB } from "./config/db.js";
+import User from "./models/User.js"; // added to seed default users
 
 // Routes
 import authRoutes from "./routes/authRoutes.js";
@@ -65,8 +67,37 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 (async () => {
-  await connectDB(); // ensure DB is connected
-  await sequelize.sync({ alter: true }); // sync models with database
-  console.log("✅ Database synchronized successfully!");
-  app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+  try {
+    await connectDB(); // ensure DB is connected
+    await sequelize.sync({ alter: true }); // sync models with database
+    console.log("✅ Database synchronized successfully!");
+
+    // 🌱 Seed default users (if they don't already exist)
+    const defaultUsers = [
+      {
+        name: "admin",
+        email: "admin@example.com",
+        password: await bcrypt.hash("admin123", 10),
+        role: "admin",
+      },
+    ];
+
+    for (const userData of defaultUsers) {
+      const [user, created] = await User.findOrCreate({
+        where: { email: userData.email },
+        defaults: userData,
+      });
+      if (created) {
+        console.log(`✅ Default user created: ${user.email} (${user.role})`);
+      } else {
+        console.log(`ℹ️ Default user already exists: ${user.email}`);
+      }
+    }
+
+    // Start the server after seeding
+    app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+  } catch (error) {
+    console.error("❌ Failed to start server:", error);
+    process.exit(1);
+  }
 })();

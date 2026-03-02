@@ -8,7 +8,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Alert } from "@/components/ui/alert"
 
 export default function ReportsPage() {
-  const { token } = useAuth()
+  const { authToken } = useAuth()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
@@ -33,12 +33,12 @@ export default function ReportsPage() {
 
   useEffect(() => {
     fetchReports()
-  }, [token])
+  }, [authToken])
 
   const fetchReports = async () => {
     try {
       await fetch("http://localhost:5000/api/reports", {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${authToken}` },
       })
     } catch (err) {
       setError("Failed to fetch reports")

@@ -478,7 +478,7 @@ function AttendantDashboard() {
                                         children: "Attendant Dashboard"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 116,
+                                        lineNumber: 115,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -486,13 +486,13 @@ function AttendantDashboard() {
                                         children: "Monitor your shift, pump status, and daily performance."
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 123,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 115,
+                                lineNumber: 114,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -509,7 +509,7 @@ function AttendantDashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 129,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -519,19 +519,19 @@ function AttendantDashboard() {
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 142,
+                                        lineNumber: 141,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 129,
+                                lineNumber: 128,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                        lineNumber: 114,
+                        lineNumber: 113,
                         columnNumber: 11
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
@@ -539,7 +539,7 @@ function AttendantDashboard() {
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                        lineNumber: 156,
+                        lineNumber: 155,
                         columnNumber: 21
                     }, this),
                     !isAuthenticated && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
@@ -547,7 +547,7 @@ function AttendantDashboard() {
                         children: "You’re in demo mode — connect to backend for live metrics."
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                        lineNumber: 158,
+                        lineNumber: 157,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -562,7 +562,7 @@ function AttendantDashboard() {
                                     children: "💰"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 172,
                                     columnNumber: 21
                                 }, void 0),
                                 trendLabel: "+4.2%",
@@ -570,7 +570,7 @@ function AttendantDashboard() {
                                 dark: isDarkMode
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 170,
+                                lineNumber: 169,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -582,7 +582,7 @@ function AttendantDashboard() {
                                     children: "⛽"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 180,
                                     columnNumber: 21
                                 }, void 0),
                                 trendLabel: "Consistent",
@@ -590,7 +590,7 @@ function AttendantDashboard() {
                                 dark: isDarkMode
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 178,
+                                lineNumber: 177,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -602,7 +602,7 @@ function AttendantDashboard() {
                                     children: "🔌"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                    lineNumber: 189,
+                                    lineNumber: 188,
                                     columnNumber: 21
                                 }, void 0),
                                 trendLabel: "Operational",
@@ -610,7 +610,7 @@ function AttendantDashboard() {
                                 dark: isDarkMode
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 186,
+                                lineNumber: 185,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$dashboard$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -622,7 +622,7 @@ function AttendantDashboard() {
                                     children: "🕒"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                    lineNumber: 197,
+                                    lineNumber: 196,
                                     columnNumber: 21
                                 }, void 0),
                                 trendLabel: stats.shiftStatus === "ON_DUTY" ? "Active" : "Inactive",
@@ -630,13 +630,13 @@ function AttendantDashboard() {
                                 dark: isDarkMode
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 194,
+                                lineNumber: 193,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                        lineNumber: 164,
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -650,7 +650,7 @@ function AttendantDashboard() {
                                         children: "Live Alerts"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 214,
+                                        lineNumber: 213,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -664,14 +664,14 @@ function AttendantDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 216,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
                                                 variant: "warning",
                                                 children: "⚠️ You are currently OFF DUTY - Please start your shift to record sales"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 220,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
@@ -679,7 +679,7 @@ function AttendantDashboard() {
                                                 children: "Pump 3 pressure low — check valve."
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 224,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
@@ -687,19 +687,19 @@ function AttendantDashboard() {
                                                 children: "Next fuel delivery scheduled for 3:00 PM."
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                lineNumber: 226,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 214,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 206,
+                                lineNumber: 205,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -710,7 +710,7 @@ function AttendantDashboard() {
                                         children: "Quick Actions"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 237,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,7 +722,7 @@ function AttendantDashboard() {
                                                         children: action.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                        lineNumber: 248,
+                                                        lineNumber: 247,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -731,46 +731,46 @@ function AttendantDashboard() {
                                                         children: "→"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                        lineNumber: 249,
+                                                        lineNumber: 248,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, action.label, true, {
                                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 240,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                        lineNumber: 239,
+                                        lineNumber: 238,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                                lineNumber: 230,
+                                lineNumber: 229,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                        lineNumber: 205,
+                        lineNumber: 204,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-                lineNumber: 112,
+                lineNumber: 111,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-            lineNumber: 111,
+            lineNumber: 110,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/frontend/src/app/attendant/dashboard/page.tsx",
-        lineNumber: 105,
+        lineNumber: 104,
         columnNumber: 5
     }, this);
 }

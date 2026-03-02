@@ -52,7 +52,6 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
           </span>
           <Button
             variant="secondary"
-            size="sm"
             onClick={handleLogout}
             aria-label="Logout"
           >

@@ -21,12 +21,15 @@ function AddSale() {
     const [message, setMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [receipt, setReceipt] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [token, setToken] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [salesHistory, setSalesHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [showHistory, setShowHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Load token from localStorage
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AddSale.useEffect": ()=>{
             const savedToken = localStorage.getItem("token");
             if (savedToken) setToken(savedToken);
             fetchFuels();
+            fetchSalesHistory();
         }
     }["AddSale.useEffect"], []);
     // Fetch fuel list
@@ -39,6 +42,18 @@ function AddSale() {
             setFuels(data);
         } catch (err) {
             console.error("Failed to fetch fuels", err);
+        }
+    };
+    // Fetch sales history
+    const fetchSalesHistory = async ()=>{
+        try {
+            const res = await fetch("http://localhost:5000/api/sales/my-sales", {
+                credentials: "include"
+            });
+            const data = await res.json();
+            setSalesHistory(data);
+        } catch (err) {
+            console.error("Failed to fetch sales history", err);
         }
     };
     // Handle submit sale
@@ -97,11 +112,11 @@ function AddSale() {
           <p><strong>Date:</strong> ${receipt.date}</p>
           <p><strong>Fuel Type:</strong> ${receipt.fuelType}</p>
           <p><strong>Quantity:</strong> ${receipt.quantity} L</p>
-          <p><strong>Price per Litre:</strong> $${receipt.pricePerLitre.toFixed(2)}</p>
-          <p><strong>Amount:</strong> $${receipt.amount.toFixed(2)}</p>
+          <p><strong>Price per Litre:</strong> UGX.${receipt.pricePerLitre.toFixed(2)}</p>
+          <p><strong>Amount:</strong> UGX.${receipt.amount.toFixed(2)}</p>
           <p><strong>Pump Number:</strong> ${receipt.pumpNumber}</p>
           <hr>
-          <h3>Total: $${receipt.amount.toFixed(2)}</h3>
+          <h3>Total: UGX.${receipt.amount.toFixed(2)}</h3>
           <p>Thank you for choosing our station!</p>
           <script>window.print();</script>
         </body>
@@ -118,7 +133,7 @@ function AddSale() {
                 children: "Record New Sale"
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                lineNumber: 126,
+                lineNumber: 154,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -139,7 +154,7 @@ function AddSale() {
                                 children: "Select Fuel Type"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                                lineNumber: 138,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, this),
                             fuels.map((fuel)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -154,13 +169,13 @@ function AddSale() {
                                     ]
                                 }, fuel.id, true, {
                                     fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                                    lineNumber: 140,
+                                    lineNumber: 168,
                                     columnNumber: 13
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 129,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -174,7 +189,7 @@ function AddSale() {
                         className: "border p-2 rounded"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 146,
+                        lineNumber: 174,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -186,7 +201,7 @@ function AddSale() {
                         className: "border p-2 rounded"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 157,
+                        lineNumber: 185,
                         columnNumber: 9
                     }, this),
                     selectedFuel && quantity && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -195,18 +210,18 @@ function AddSale() {
                             "Amount: ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: [
-                                    "$",
+                                    "UGX.",
                                     (parseFloat(quantity) * selectedFuel.pricePerLitre).toFixed(2)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                                lineNumber: 168,
+                                lineNumber: 196,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 167,
+                        lineNumber: 195,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -215,13 +230,13 @@ function AddSale() {
                         children: "Add Sale"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 172,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                lineNumber: 128,
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -229,7 +244,7 @@ function AddSale() {
                 children: message
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                lineNumber: 177,
+                lineNumber: 205,
                 columnNumber: 19
             }, this),
             receipt && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -240,7 +255,7 @@ function AddSale() {
                         children: "Receipt"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 181,
+                        lineNumber: 209,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -250,7 +265,7 @@ function AddSale() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 182,
+                        lineNumber: 210,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -261,17 +276,17 @@ function AddSale() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 183,
+                        lineNumber: 211,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         children: [
-                            "Amount: $",
+                            "Amount: UGX.",
                             receipt.amount.toFixed(2)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 184,
+                        lineNumber: 212,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -281,7 +296,7 @@ function AddSale() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 185,
+                        lineNumber: 213,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -290,23 +305,163 @@ function AddSale() {
                         children: "Print Receipt"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                        lineNumber: 186,
+                        lineNumber: 214,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-                lineNumber: 180,
+                lineNumber: 208,
                 columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-8 border-t pt-6",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex justify-between items-center mb-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-xl font-bold",
+                                children: "Sales History"
+                            }, void 0, false, {
+                                fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                lineNumber: 226,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>setShowHistory(!showHistory),
+                                className: "bg-gray-600 text-white px-3 py-1 rounded text-sm",
+                                children: [
+                                    showHistory ? "Hide" : "Show",
+                                    " History"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                lineNumber: 227,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                        lineNumber: 225,
+                        columnNumber: 9
+                    }, this),
+                    showHistory && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-3",
+                        children: salesHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-gray-500 text-center",
+                            children: "No sales recorded yet."
+                        }, void 0, false, {
+                            fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                            lineNumber: 238,
+                            columnNumber: 15
+                        }, this) : salesHistory.map((sale)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "border rounded p-3 bg-gray-50",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex justify-between items-start",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "font-semibold",
+                                                    children: sale.fuelType.name
+                                                }, void 0, false, {
+                                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                                    lineNumber: 244,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-gray-600",
+                                                    children: [
+                                                        "Quantity: ",
+                                                        sale.quantitySold,
+                                                        " L | Pump: ",
+                                                        sale.pumpNumber
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                                    lineNumber: 245,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-gray-600",
+                                                    children: [
+                                                        "Date: ",
+                                                        new Date(sale.saleDate).toLocaleString()
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                                    lineNumber: 248,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                            lineNumber: 243,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-right",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "font-bold text-green-600",
+                                                    children: [
+                                                        "UGX.",
+                                                        sale.totalAmount.toFixed(2)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                                    lineNumber: 253,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-xs text-gray-500",
+                                                    children: [
+                                                        "@ UGX.",
+                                                        sale.fuelType.pricePerLitre.toFixed(2),
+                                                        "/L"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                                    lineNumber: 254,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                            lineNumber: 252,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                    lineNumber: 242,
+                                    columnNumber: 19
+                                }, this)
+                            }, sale.id, false, {
+                                fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                                lineNumber: 241,
+                                columnNumber: 17
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                        lineNumber: 236,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
+                lineNumber: 224,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/src/app/attendant/sales/page.tsx",
-        lineNumber: 125,
+        lineNumber: 153,
         columnNumber: 5
     }, this);
 }
-_s(AddSale, "4dvLBRwiPFccQ1eBCMQ5U1JHmxI=");
+_s(AddSale, "Y6bf2ipuWe9rpmWJ9nKsaNnCfLU=");
 _c = AddSale;
 var _c;
 __turbopack_context__.k.register(_c, "AddSale");

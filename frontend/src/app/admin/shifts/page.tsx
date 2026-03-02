@@ -42,6 +42,9 @@ const shiftTypeConfig = {
   NIGHT: { label: "Night Shift", time: "22:00 - 06:00", color: "bg-indigo-600", icon: "🌙" },
 }
 
+// Fallback for unknown shift types
+const DEFAULT_SHIFT_CONFIG = { label: "Unknown Shift", time: "--:--", color: "bg-gray-500", icon: "⏰" }
+
 const statusConfig = {
   SCHEDULED: { label: "Scheduled", color: "bg-blue-100 text-blue-800", icon: <MdSchedule /> },
   IN_PROGRESS: { label: "In Progress", color: "bg-green-100 text-green-800", icon: <MdAccessTime /> },
@@ -225,7 +228,7 @@ export default function AdminShiftsPage() {
           </Button>
         </div>
 
-        {error && <Alert variant="destructive" className="mb-6">{error}</Alert>}
+        {error && <div className="mb-6"><Alert variant="destructive">{error}</Alert></div>}
 
         <AnimatePresence>
           {showForm && (
@@ -345,89 +348,93 @@ export default function AdminShiftsPage() {
                     {statusConfig[status as keyof typeof statusConfig].label} ({statusShifts.length})
                   </h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {statusShifts.map((shift) => (
-                      <motion.div
-                        key={shift.id}
-                        layout
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow"
-                      >
-                        <div className={`${shiftTypeConfig[shift.shiftType].color} text-white p-4`}>
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <div className="text-3xl mb-1">{shiftTypeConfig[shift.shiftType].icon}</div>
-                              <h3 className="font-bold text-lg">{shiftTypeConfig[shift.shiftType].label}</h3>
-                              <p className="text-sm opacity-90">{shiftTypeConfig[shift.shiftType].time}</p>
+                    {statusShifts.map((shift) => {
+                      // Safely get shift type config with fallback
+                      const shiftConfig = shiftTypeConfig[shift.shiftType] || DEFAULT_SHIFT_CONFIG;
+                      return (
+                        <motion.div
+                          key={shift.id}
+                          layout
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow"
+                        >
+                          <div className={`${shiftConfig.color} text-white p-4`}>
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <div className="text-3xl mb-1">{shiftConfig.icon}</div>
+                                <h3 className="font-bold text-lg">{shiftConfig.label}</h3>
+                                <p className="text-sm opacity-90">{shiftConfig.time}</p>
+                              </div>
+                              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusConfig[shift.status].color}`}>
+                                {statusConfig[shift.status].label}
+                              </span>
                             </div>
-                            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusConfig[shift.status].color}`}>
-                              {statusConfig[shift.status].label}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="p-4 space-y-3">
-                          <div className="flex items-center gap-2 text-slate-700">
-                            <MdPerson className="text-indigo-600" />
-                            <span className="font-semibold">{shift.attendant?.name || "Unknown"}</span>
                           </div>
 
-                          <div className="text-sm text-slate-600 space-y-1">
-                            <div className="flex justify-between">
-                              <span className="font-medium">Date:</span>
-                              <span>{new Date(shift.scheduledDate).toLocaleDateString()}</span>
+                          <div className="p-4 space-y-3">
+                            <div className="flex items-center gap-2 text-slate-700">
+                              <MdPerson className="text-indigo-600" />
+                              <span className="font-semibold">{shift.attendant?.name || "Unknown"}</span>
                             </div>
-                            {shift.assignedPump && (
+
+                            <div className="text-sm text-slate-600 space-y-1">
                               <div className="flex justify-between">
-                                <span className="font-medium">Pump:</span>
-                                <span className="font-semibold text-indigo-600">{shift.assignedPump}</span>
+                                <span className="font-medium">Date:</span>
+                                <span>{new Date(shift.scheduledDate).toLocaleDateString()}</span>
+                              </div>
+                              {shift.assignedPump && (
+                                <div className="flex justify-between">
+                                  <span className="font-medium">Pump:</span>
+                                  <span className="font-semibold text-indigo-600">{shift.assignedPump}</span>
+                                </div>
+                              )}
+                              {shift.actualStartTime && (
+                                <div className="flex justify-between">
+                                  <span className="font-medium">Clocked In:</span>
+                                  <span>{new Date(shift.actualStartTime).toLocaleTimeString()}</span>
+                                </div>
+                              )}
+                              {shift.actualEndTime && (
+                                <div className="flex justify-between">
+                                  <span className="font-medium">Clocked Out:</span>
+                                  <span>{new Date(shift.actualEndTime).toLocaleTimeString()}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            {shift.description && (
+                              <div className="pt-2 border-t border-slate-200">
+                                <p className="text-xs text-slate-600 italic">{shift.description}</p>
                               </div>
                             )}
-                            {shift.actualStartTime && (
-                              <div className="flex justify-between">
-                                <span className="font-medium">Clocked In:</span>
-                                <span>{new Date(shift.actualStartTime).toLocaleTimeString()}</span>
+
+                            {shift.notes && (
+                              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2">
+                                <p className="text-xs text-yellow-800"><strong>Notes:</strong> {shift.notes}</p>
                               </div>
                             )}
-                            {shift.actualEndTime && (
-                              <div className="flex justify-between">
-                                <span className="font-medium">Clocked Out:</span>
-                                <span>{new Date(shift.actualEndTime).toLocaleTimeString()}</span>
-                              </div>
-                            )}
-                          </div>
 
-                          {shift.description && (
-                            <div className="pt-2 border-t border-slate-200">
-                              <p className="text-xs text-slate-600 italic">{shift.description}</p>
+                            <div className="flex gap-2 pt-2">
+                              <Button
+                                onClick={() => handleEdit(shift)}
+                                variant="secondary"
+                                className="flex-1 text-sm py-2"
+                              >
+                                <MdEdit className="mr-1" /> Edit
+                              </Button>
+                              <Button
+                                onClick={() => handleDelete(shift.id)}
+                                variant="danger"
+                                className="flex-1 text-sm py-2"
+                              >
+                                <MdDelete className="mr-1" /> Delete
+                              </Button>
                             </div>
-                          )}
-
-                          {shift.notes && (
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2">
-                              <p className="text-xs text-yellow-800"><strong>Notes:</strong> {shift.notes}</p>
-                            </div>
-                          )}
-
-                          <div className="flex gap-2 pt-2">
-                            <Button
-                              onClick={() => handleEdit(shift)}
-                              variant="secondary"
-                              className="flex-1 text-sm py-2"
-                            >
-                              <MdEdit className="mr-1" /> Edit
-                            </Button>
-                            <Button
-                              onClick={() => handleDelete(shift.id)}
-                              variant="danger"
-                              className="flex-1 text-sm py-2"
-                            >
-                              <MdDelete className="mr-1" /> Delete
-                            </Button>
                           </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      )
+                    })}
                   </div>
                 </div>
               )

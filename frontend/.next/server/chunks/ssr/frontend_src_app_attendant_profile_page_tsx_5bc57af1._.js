@@ -1,0 +1,3 @@
+module.exports=[32159,a=>{"use strict";var b=a.i(57850),c=a.i(47088);function d(){let{user:a}=(0,c.useAuth)();return(0,b.jsxs)("div",{children:[(0,b.jsx)("h1",{className:"text-2xl font-bold mb-4",children:"Profile"}),(0,b.jsxs)("div",{className:"bg-white p-6 rounded-xl shadow-md max-w-md",children:[(0,b.jsxs)("p",{children:[(0,b.jsx)("strong",{children:"Name:"})," ",a?.name]}),(0,b.jsxs)("p",{children:[(0,b.jsx)("strong",{children:"Email:"})," ",a?.email]}),(0,b.jsxs)("p",{children:[(0,b.jsx)("strong",{children:"Role:"})," ",a?.role]})]})]})}a.s(["default",()=>d])}];
+
+//# sourceMappingURL=frontend_src_app_attendant_profile_page_tsx_5bc57af1._.js.map

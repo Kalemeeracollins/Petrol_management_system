@@ -27,13 +27,13 @@ const FuelSale = sequelize.define(
     // Foreign Key → User (attendant)
     attendantId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,          // ✅ Changed from false to true to allow SET NULL
       references: {
         model: User,
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL", // don't delete sales if user is deleted
+      onDelete: "SET NULL",     // don't delete sales if user is deleted
     },
 
     quantitySold: {
