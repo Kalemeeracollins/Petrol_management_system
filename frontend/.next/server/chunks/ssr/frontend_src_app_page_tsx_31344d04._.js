@@ -1,3 +1,0 @@
-module.exports=[73123,a=>{"use strict";var b=a.i(45056),c=a.i(93609),d=a.i(47088);function e(){let a=(0,c.useRouter)(),{isAuthenticated:e,user:f,loading:g}=(0,d.useAuth)();return(0,b.useEffect)(()=>{if(!g){if(!e||!f)return void a.push("/login");switch(f.role){case"ADMIN":a.push("/admin/dashboard");break;case"ATTENDANT":a.push("/attendant/dashboard");break;case"SUPPLIER":a.push("/supplier/dashboard");break;default:a.push("/login")}}},[e,f,g,a]),null}a.s(["default",()=>e])}];
-
-//# sourceMappingURL=frontend_src_app_page_tsx_31344d04._.js.map

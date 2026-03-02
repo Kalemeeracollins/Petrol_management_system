@@ -61,6 +61,7 @@ export default function RestockPage() {
   useEffect(() => {
     if (isAuthenticated) {
       fetchFuels()
+      fetchAttendants()
       fetchRestockRecords()
     }
   }, [isAuthenticated])
@@ -74,6 +75,18 @@ export default function RestockPage() {
       setFuels(Array.isArray(data) ? data : data.fuels || [])
     } catch (err) {
       console.error("Failed to fetch fuels", err)
+    }
+  }
+
+  const fetchAttendants = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/attendants", {
+        credentials: 'include'
+      })
+      const data = await res.json()
+      setAttendants(Array.isArray(data) ? data : data.attendants || [])
+    } catch (err) {
+      console.error("Failed to fetch attendants", err)
     }
   }
 
@@ -209,6 +222,21 @@ export default function RestockPage() {
                             <option key={fuel.id} value={fuel.id}>
                               {fuel.name} — Current Stock: {fuel.quantityInStock}L
                             </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Attendant *</label>
+                        <select
+                          value={formData.attendantId}
+                          onChange={(e) => setFormData({ ...formData, attendantId: e.target.value })}
+                          required
+                          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                        >
+                          <option value="">Select Attendant</option>
+                          {attendants.map((att) => (
+                            <option key={att.id} value={att.id}>{att.name} ({att.email})</option>
                           ))}
                         </select>
                       </div>
